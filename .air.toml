@@ -1,0 +1,8 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "go build -o ./tmp/app.exe main.go"
+bin = "tmp/app.exe"
+full_bin = "tmp/app.exe"
+delay = 1000
