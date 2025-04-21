@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gustavsant/go-crud/src/config"
-	"github.com/gustavsant/go-crud/src/routes"
+	"github.com/gustavsant/go-crud/config"
+	"github.com/gustavsant/go-crud/routes"
 )
 
 func main() {
