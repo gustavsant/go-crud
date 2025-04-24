@@ -53,6 +53,27 @@ func GetMovies() ([]dto.MovieResponseDTO, error) {
 
 }
 
+func GetMovie(id string) (dto.MovieResponseDTO, error) {
+	objectId, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return dto.MovieResponseDTO{}, err
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	filter := bson.M{"_id": objectId}
+
+	var movie dto.MovieResponseDTO
+	err = config.DB.Collection("movies").FindOne(ctx, filter).Decode(&movie)
+
+	if err != nil {
+		return dto.MovieResponseDTO{}, err
+	}
+
+	return movie, nil
+
+}
+
 func UpdateMovie(id string, updates *model.Movie) error {
 	objectId, err := primitive.ObjectIDFromHex(id)
 

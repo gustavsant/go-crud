@@ -35,6 +35,19 @@ func GetMovies(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, movies)
 }
 
+func GetMovie(ctx *gin.Context) {
+	id := ctx.Param("id")
+
+	result, err := service.GetMovie(id)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+	}
+
+	ctx.JSON(http.StatusOK, result)
+}
+
 func UpdateMovie(ctx *gin.Context) {
 	id := ctx.Param("id")
 
