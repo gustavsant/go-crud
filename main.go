@@ -13,12 +13,13 @@ func main() {
 	router := gin.Default()
 
 	config := cors.DefaultConfig()
+	config.AllowCredentials = true
 	config.AllowOrigins = []string{"http://localhost:3000"}
 	router.Use(cors.New(config))
 
 	router.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
-			"message": "Success!",
+			"message": "Pong!",
 		})
 	})
 

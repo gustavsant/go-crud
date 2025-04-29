@@ -2,6 +2,7 @@ package config
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -21,6 +22,7 @@ func ConnectDatabase() {
 
 	mongoURI := os.Getenv("MONGO_URI")
 	dbName := os.Getenv("MONGO_DB")
+	fmt.Println(os.Getenv("SECRET_KEYWORD"))
 
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
