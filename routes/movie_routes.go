@@ -8,12 +8,12 @@ import (
 
 func MovieRouter(router *gin.Engine) {
 	router.GET("/movie/:id", controller.GetMovie)
-	router.GET("/movies", middlewares.AuthMiddleware(), controller.GetMovies)
+	router.GET("/movies", controller.GetMovies)
 
 	router.POST("/movies", middlewares.AuthMiddleware(), controller.CreateMovie)
 
-	router.PUT("/movies/:id", controller.UpdateMovie)
-	router.DELETE("movies/:id", controller.DeleteMovie)
+	router.PUT("/movies/:id", middlewares.AuthMiddleware(), controller.UpdateMovie)
+	router.DELETE("movies/:id", middlewares.AuthMiddleware(), controller.DeleteMovie)
 
 	router.POST("/register", controller.RegisterUser)
 	router.POST("/login", controller.AuthenticateUser)
