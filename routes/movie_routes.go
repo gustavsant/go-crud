@@ -11,7 +11,6 @@ func MovieRouter(router *gin.Engine) {
 	router.GET("/movies", controller.GetMovies)
 
 	router.POST("/movies", middlewares.AuthMiddleware(), controller.CreateMovie)
-
 	router.PUT("/movies/:id", middlewares.AuthMiddleware(), controller.UpdateMovie)
 	router.DELETE("movies/:id", middlewares.AuthMiddleware(), controller.DeleteMovie)
 

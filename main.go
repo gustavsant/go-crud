@@ -14,7 +14,7 @@ func main() {
 
 	config := cors.DefaultConfig()
 	config.AllowCredentials = true
-	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowOrigins = []string{"http://localhost:5173"}
 	router.Use(cors.New(config))
 
 	router.GET("/ping", func(ctx *gin.Context) {
